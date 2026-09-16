@@ -18,9 +18,755 @@
       rel="stylesheet"
     />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/src/styles/index.css" />
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <!-- Top Navigation -->
+    <nav style="position: fixed; top: 0; left: 0; right: 0; z-index: 900; background: rgba(7, 9, 19, 0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding: 0.85rem 0;">
+      <div class="container" style="display: flex; align-items: center; justify-content: space-between;">
+        <a href="#" style="display: flex; align-items: center; gap: 0.75rem; text-decoration: none;">
+          <div style="width: 38px; height: 38px; border-radius: 10px; background: linear-gradient(135deg, #7C3AED 0%, #06B6D4 100%); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; font-size: 1.15rem; box-shadow: 0 0 15px rgba(124, 58, 237, 0.5);">
+            ⚡
+          </div>
+          <div>
+            <div style="font-family: var(--font-heading); font-weight: 800; font-size: 1.15rem; color: #fff; line-height: 1.1;">
+              SLIIT <span class="gradient-text">TECH 2026</span>
+            </div>
+            <div style="font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.05em;">MALABE CAMPUS</div>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <div class="desktop-nav-links" style="display: none; align-items: center; gap: 1.8rem;">
+          <a href="#about" style="color: var(--text-muted); text-decoration: none; font-size: 0.92rem; font-weight: 500;">About</a>
+          <a href="#tracks" style="color: var(--text-muted); text-decoration: none; font-size: 0.92rem; font-weight: 500;">Tracks</a>
+          <a href="#speakers" style="color: var(--text-muted); text-decoration: none; font-size: 0.92rem; font-weight: 500;">Speakers</a>
+          <a href="#schedule" style="color: var(--text-muted); text-decoration: none; font-size: 0.92rem; font-weight: 500;">Schedule</a>
+          <a href="#tickets" style="color: var(--text-muted); text-decoration: none; font-size: 0.92rem; font-weight: 500;">Tickets</a>
+          <a href="#venue" style="color: var(--text-muted); text-decoration: none; font-size: 0.92rem; font-weight: 500;">Venue</a>
+          <a href="#faq" style="color: var(--text-muted); text-decoration: none; font-size: 0.92rem; font-weight: 500;">FAQ</a>
+        </div>
+
+        <div class="desktop-nav-actions" style="display: none; align-items: center; gap: 0.85rem;">
+          <button onclick="openCFPModal()" class="btn btn-outline btn-sm">Call for Papers</button>
+          <button onclick="openRegisterModal('student')" class="btn btn-primary btn-sm">Get Tickets</button>
+        </div>
+
+        <button id="mobile-menu-btn" class="mobile-menu-toggle" style="background: rgba(255, 255, 255, 0.06); border: 1px solid var(--border-glass); color: #fff; border-radius: 8px; padding: 0.5rem 0.75rem; cursor: pointer; font-size: 1.2rem;">
+          ☰
+        </button>
+      </div>
+
+      <!-- Mobile Menu Dropdown -->
+      <div id="mobile-menu" style="display: none; flex-direction: column; gap: 1rem; padding: 1.5rem; background: rgba(9, 13, 24, 0.98); border-top: 1px solid var(--border-glass); margin-top: 0.85rem;">
+        <a href="#about" style="color: #fff; text-decoration: none; font-weight: 600;">About</a>
+        <a href="#tracks" style="color: #fff; text-decoration: none; font-weight: 600;">Tracks</a>
+        <a href="#speakers" style="color: #fff; text-decoration: none; font-weight: 600;">Speakers</a>
+        <a href="#schedule" style="color: #fff; text-decoration: none; font-weight: 600;">Schedule</a>
+        <a href="#tickets" style="color: #fff; text-decoration: none; font-weight: 600;">Tickets</a>
+        <a href="#venue" style="color: #fff; text-decoration: none; font-weight: 600;">Venue</a>
+        <a href="#faq" style="color: #fff; text-decoration: none; font-weight: 600;">FAQ</a>
+        <button onclick="openCFPModal()" class="btn btn-outline" style="width: 100%;">Call for Papers</button>
+        <button onclick="openRegisterModal('student')" class="btn btn-primary" style="width: 100%;">Get Tickets</button>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section style="min-height: 100vh; display: flex; align-items: center; justify-content: center; padding-top: 8rem; padding-bottom: 5rem; position: relative; overflow: hidden;">
+      <div style="position: absolute; top: 10%; left: 50%; transform: translateX(-50%); width: 650px; height: 650px; background: radial-gradient(circle, rgba(124, 58, 237, 0.22) 0%, rgba(6, 182, 212, 0.1) 45%, transparent 70%); filter: blur(70px); pointer-events: none; z-index: 0;"></div>
+
+      <div class="container" style="position: relative; z-index: 1; text-align: center;">
+        <div style="display: inline-flex; align-items: center; gap: 0.6rem; margin-bottom: 1.25rem;">
+          <span class="badge badge-cyan" style="display: flex; align-items: center; gap: 0.4rem;">
+            <span style="width: 8px; height: 8px; border-radius: 50%; background: #06B6D4; display: inline-block; box-shadow: 0 0 10px #06B6D4;"></span>
+            SLIIT FACULTY OF COMPUTING
+          </span>
+          <span class="badge">ANNUAL CONFERENCE 2026</span>
+        </div>
+
+        <h1 style="font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900; line-height: 1.1; margin-bottom: 1.25rem; letter-spacing: -0.03em;">
+          Explore the <span class="gradient-text">Future of Technology</span>
+        </h1>
+
+        <p style="font-size: clamp(1.05rem, 2vw, 1.25rem); color: var(--text-muted); max-width: 780px; margin: 0 auto 1.5rem auto; line-height: 1.65;">
+          Sri Lanka's flagship technology gathering uniting 1,500+ student innovators, cloud architects, AI researchers, and engineering leaders for 3 days of code, masterclasses, and discovery at SLIIT Malabe Campus.
+        </p>
+
+        <div style="display: inline-flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1.5rem; padding: 0.75rem 1.6rem; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-glass); border-radius: var(--radius-full); backdrop-filter: blur(10px); font-size: 0.92rem; color: var(--text-main); margin-bottom: 1.5rem;">
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span>📅</span>
+            <strong>November 12 - 14, 2026</strong>
+          </div>
+          <div style="width: 4px; height: 4px; border-radius: 50%; background: var(--text-dim);"></div>
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span>📍</span>
+            <span>SLIIT Malabe Campus, Sri Lanka</span>
+          </div>
+          <div style="width: 4px; height: 4px; border-radius: 50%; background: var(--text-dim);"></div>
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span>🎟️</span>
+            <span style="color: var(--emerald); font-weight: 600;">Registrations Open</span>
+          </div>
+        </div>
+
+        <!-- Countdown Timer -->
+        <div style="display: flex; align-items: center; justify-content: center; gap: 0.9rem; flex-wrap: wrap; margin: 2rem 0;">
+          <div style="background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(124, 58, 237, 0.3); backdrop-filter: blur(12px); border-radius: var(--radius-md); padding: 1rem 1.4rem; min-width: 92px; text-align: center; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);">
+            <div id="cd-days" style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; line-height: 1; color: #fff; text-shadow: 0 0 20px rgba(124, 58, 237, 0.6);">00</div>
+            <div style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--cyan-light); margin-top: 0.4rem;">Days</div>
+          </div>
+          <div style="background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(124, 58, 237, 0.3); backdrop-filter: blur(12px); border-radius: var(--radius-md); padding: 1rem 1.4rem; min-width: 92px; text-align: center; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);">
+            <div id="cd-hours" style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; line-height: 1; color: #fff; text-shadow: 0 0 20px rgba(124, 58, 237, 0.6);">00</div>
+            <div style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--cyan-light); margin-top: 0.4rem;">Hours</div>
+          </div>
+          <div style="background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(124, 58, 237, 0.3); backdrop-filter: blur(12px); border-radius: var(--radius-md); padding: 1rem 1.4rem; min-width: 92px; text-align: center; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);">
+            <div id="cd-minutes" style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; line-height: 1; color: #fff; text-shadow: 0 0 20px rgba(124, 58, 237, 0.6);">00</div>
+            <div style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--cyan-light); margin-top: 0.4rem;">Minutes</div>
+          </div>
+          <div style="background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(124, 58, 237, 0.3); backdrop-filter: blur(12px); border-radius: var(--radius-md); padding: 1rem 1.4rem; min-width: 92px; text-align: center; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);">
+            <div id="cd-seconds" style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; line-height: 1; color: #fff; text-shadow: 0 0 20px rgba(124, 58, 237, 0.6);">00</div>
+            <div style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--cyan-light); margin-top: 0.4rem;">Seconds</div>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 2rem;">
+          <button onclick="openRegisterModal('student')" class="btn btn-primary btn-lg">
+            <span>Register & Get Pass</span>
+            <span>→</span>
+          </button>
+          <a href="#schedule" class="btn btn-outline btn-lg">Explore Agenda</a>
+          <button onclick="openCFPModal()" class="btn btn-cyan btn-lg">Submit Talk Proposal</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats & About Section -->
+    <section id="about" class="section-wrapper">
+      <div class="container">
+        <!-- Stats Grid -->
+        <div id="stats-grid" style="display: grid; grid-templateColumns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem; margin-bottom: 5rem;"></div>
+
+        <div class="section-header">
+          <span class="badge">WHY ATTEND SLIIT TECH 2026</span>
+          <h2 class="section-title">
+            Where Sri Lanka’s <span class="gradient-text">Tech Visionaries Gather</span>
+          </h2>
+          <p class="section-subtitle">
+            An immersive 3-day technical symposium created to bridge academic excellence, practical engineering craftsmanship, and high-impact enterprise innovation.
+          </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.75rem;">
+          <div class="glass-card" style="display: flex; flex-direction: column; gap: 1rem;">
+            <div style="width: 54px; height: 54px; border-radius: 14px; background: rgba(124, 58, 237, 0.15); border: 1px solid rgba(124, 58, 237, 0.3); display: flex; align-items: center; justify-content: center; font-size: 1.6rem;">🚀</div>
+            <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff;">Innovation & Research</h3>
+            <p style="color: var(--text-muted); font-size: 0.94rem; line-height: 1.6;">Discover cutting-edge computational research, autonomous systems, and academic breakthroughs from SLIIT and global research laboratories.</p>
+          </div>
+
+          <div class="glass-card" style="display: flex; flex-direction: column; gap: 1rem;">
+            <div style="width: 54px; height: 54px; border-radius: 14px; background: rgba(6, 182, 212, 0.15); border: 1px solid rgba(6, 182, 212, 0.3); display: flex; align-items: center; justify-content: center; font-size: 1.6rem;">💻</div>
+            <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff;">Hands-on Labs</h3>
+            <p style="color: var(--text-muted); font-size: 0.94rem; line-height: 1.6;">Deep-dive into live coding workshops, distributed systems debugging, smart contracts, and fine-tuning AI models in state-of-the-art campus labs.</p>
+          </div>
+
+          <div class="glass-card" style="display: flex; flex-direction: column; gap: 1rem;">
+            <div style="width: 54px; height: 54px; border-radius: 14px; background: rgba(236, 72, 153, 0.15); border: 1px solid rgba(236, 72, 153, 0.3); display: flex; align-items: center; justify-content: center; font-size: 1.6rem;">🏆</div>
+            <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff;">24-Hour Hackathon</h3>
+            <p style="color: var(--text-muted); font-size: 0.94rem; line-height: 1.6;">Compete with top undergraduate developer teams across Sri Lanka solving real-world challenges with an LKR 1,000,000+ prize pool.</p>
+          </div>
+
+          <div class="glass-card" style="display: flex; flex-direction: column; gap: 1rem;">
+            <div style="width: 54px; height: 54px; border-radius: 14px; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); display: flex; align-items: center; justify-content: center; font-size: 1.6rem;">🤝</div>
+            <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff;">Career & Industry Mixer</h3>
+            <p style="color: var(--text-muted); font-size: 0.94rem; line-height: 1.6;">Connect directly with engineering directors, technical recruiters, startup founders, and global tech sponsors looking for top tech talent.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tracks Section -->
+    <section id="tracks" class="section-wrapper" style="background: rgba(10, 14, 26, 0.4);">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge badge-cyan">EXPLORE SPECIALIZED TRACKS</span>
+          <h2 class="section-title">
+            Curated Knowledge Across <span class="gradient-cyan-text">4 Tech Frontiers</span>
+          </h2>
+          <p className="section-subtitle">
+            Tailor your experience with deep-dive tracks designed for software architects, data scientists, security researchers, and full-stack developers.
+          </p>
+        </div>
+        <div id="tracks-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.75rem;"></div>
+      </div>
+    </section>
+
+    <!-- Speakers Section -->
+    <section id="speakers" class="section-wrapper">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge">DISTINGUISHED SPEAKERS</span>
+          <h2 class="section-title">
+            Learn from <span class="gradient-text">Global Industry Leaders</span>
+          </h2>
+          <p class="section-subtitle">
+            Hear visionary keynotes and technical deep-dives from principal scientists, engineering directors, and top research faculties.
+          </p>
+
+          <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin-top: 2rem;">
+            <button class="speaker-tab-btn" data-track="all" onclick="filterSpeakerByTrack('all')" style="padding: 0.55rem 1.2rem; border-radius: var(--radius-full); font-size: 0.86rem; font-weight: 600; cursor: pointer; border: 1px solid var(--primary-light); background: rgba(124, 58, 237, 0.25); color: #fff;">All Speakers</button>
+            <button class="speaker-tab-btn" data-track="ai-data" onclick="filterSpeakerByTrack('ai-data')" style="padding: 0.55rem 1.2rem; border-radius: var(--radius-full); font-size: 0.86rem; font-weight: 600; cursor: pointer; border: 1px solid var(--border-glass); background: rgba(255, 255, 255, 0.03); color: var(--text-muted);">AI & Data</button>
+            <button class="speaker-tab-btn" data-track="cloud-devops" onclick="filterSpeakerByTrack('cloud-devops')" style="padding: 0.55rem 1.2rem; border-radius: var(--radius-full); font-size: 0.86rem; font-weight: 600; cursor: pointer; border: 1px solid var(--border-glass); background: rgba(255, 255, 255, 0.03); color: var(--text-muted);">Cloud & DevOps</button>
+            <button class="speaker-tab-btn" data-track="cyber-web3" onclick="filterSpeakerByTrack('cyber-web3')" style="padding: 0.55rem 1.2rem; border-radius: var(--radius-full); font-size: 0.86rem; font-weight: 600; cursor: pointer; border: 1px solid var(--border-glass); background: rgba(255, 255, 255, 0.03); color: var(--text-muted);">Cybersecurity</button>
+            <button class="speaker-tab-btn" data-track="web-mobile" onclick="filterSpeakerByTrack('web-mobile')" style="padding: 0.55rem 1.2rem; border-radius: var(--radius-full); font-size: 0.86rem; font-weight: 600; cursor: pointer; border: 1px solid var(--border-glass); background: rgba(255, 255, 255, 0.03); color: var(--text-muted);">Next-Gen Web</button>
+          </div>
+        </div>
+
+        <div id="speakers-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem;"></div>
+      </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section id="schedule" class="section-wrapper" style="background: rgba(8, 12, 22, 0.6);">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge badge-emerald">AGENDA & TIMETABLE</span>
+          <h2 class="section-title">
+            3-Day Interactive <span class="gradient-text">Conference Schedule</span>
+          </h2>
+          <p class="section-subtitle">
+            Plan your custom schedule across keynotes, hands-on development labs, networking events, and the 24h Hackathon.
+          </p>
+
+          <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 2.5rem; flex-wrap: wrap;">
+            <button class="day-tab-btn" data-day="1" onclick="setScheduleDay(1)" style="padding: 1rem 1.8rem; border-radius: var(--radius-md); cursor: pointer; text-align: left; border: 1px solid var(--primary-light); background: rgba(124, 58, 237, 0.2); box-shadow: 0 10px 25px rgba(124, 58, 237, 0.25);">
+              <div style="font-size: 0.82rem; text-transform: uppercase; color: var(--cyan-light); font-weight: 700;">Day 01</div>
+              <div style="font-size: 1.05rem; font-weight: 800; color: #fff;">Thursday</div>
+              <div style="font-size: 0.78rem; color: var(--text-muted);">Nov 12, 2026</div>
+            </button>
+            <button class="day-tab-btn" data-day="2" onclick="setScheduleDay(2)" style="padding: 1rem 1.8rem; border-radius: var(--radius-md); cursor: pointer; text-align: left; border: 1px solid var(--border-glass); background: rgba(255, 255, 255, 0.03);">
+              <div style="font-size: 0.82rem; text-transform: uppercase; color: var(--text-dim); font-weight: 700;">Day 02</div>
+              <div style="font-size: 1.05rem; font-weight: 800; color: #fff;">Friday</div>
+              <div style="font-size: 0.78rem; color: var(--text-muted);">Nov 13, 2026</div>
+            </button>
+            <button class="day-tab-btn" data-day="3" onclick="setScheduleDay(3)" style="padding: 1rem 1.8rem; border-radius: var(--radius-md); cursor: pointer; text-align: left; border: 1px solid var(--border-glass); background: rgba(255, 255, 255, 0.03);">
+              <div style="font-size: 0.82rem; text-transform: uppercase; color: var(--text-dim); font-weight: 700;">Day 03</div>
+              <div style="font-size: 1.05rem; font-weight: 800; color: #fff;">Saturday</div>
+              <div style="font-size: 0.78rem; color: var(--text-muted);">Nov 14, 2026</div>
+            </button>
+          </div>
+
+          <div style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap; justify-content: center;">
+            <input
+              id="schedule-search-input"
+              type="text"
+              placeholder="🔍 Search sessions, speakers, or topics..."
+              class="form-input"
+              style="max-width: 400px;"
+            />
+            <select id="schedule-track-select" class="form-select" style="max-width: 220px;">
+              <option value="all">All Tracks</option>
+              <option value="ai-data">AI & Machine Learning</option>
+              <option value="cloud-devops">Cloud & DevOps</option>
+              <option value="cyber-web3">Cybersecurity & Web3</option>
+              <option value="web-mobile">Next-Gen Web & Mobile</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="schedule-list" style="display: flex; flex-direction: column; gap: 1.25rem; max-width: 900px; margin: 0 auto;"></div>
+      </div>
+    </section>
+
+    <!-- Tickets Section -->
+    <section id="tickets" class="section-wrapper">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge">TICKETING & PASSES</span>
+          <h2 class="section-title">
+            Choose Your <span class="gradient-text">Conference Experience</span>
+          </h2>
+          <p class="section-subtitle">
+            All passes include access to conference keynote sessions, hackathon exhibition, digital certificates, and conference lunch.
+          </p>
+
+          <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255, 255, 255, 0.05); padding: 0.35rem 0.5rem; border-radius: var(--radius-full); border: 1px solid var(--border-glass); margin-top: 1.75rem;">
+            <button id="btn-curr-lkr" onclick="setTicketCurrency('LKR')" style="padding: 0.4rem 1rem; border-radius: var(--radius-full); border: none; cursor: pointer; font-size: 0.82rem; font-weight: 700; background: var(--primary); color: #fff;">LKR (Sri Lanka)</button>
+            <button id="btn-curr-usd" onclick="setTicketCurrency('USD')" style="padding: 0.4rem 1rem; border-radius: var(--radius-full); border: none; cursor: pointer; font-size: 0.82rem; font-weight: 700; background: transparent; color: #fff;">USD ($)</button>
+          </div>
+        </div>
+
+        <div id="tickets-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; align-items: stretch;"></div>
+      </div>
+    </section>
+
+    <!-- Venue Section -->
+    <section id="venue" class="section-wrapper" style="background: rgba(9, 13, 24, 0.5);">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge">LOCATION & CAMPUS GUIDE</span>
+          <h2 class="section-title">
+            SLIIT Main Campus, <span class="gradient-text">Malabe</span>
+          </h2>
+          <p class="section-subtitle">
+            Experience world-class computing facilities, innovation incubators, and modern auditoriums surrounded by lush campus greenery.
+          </p>
+
+          <div style="display: flex; justify-content: center; gap: 0.75rem; margin-top: 1.75rem;">
+            <button id="venue-tab-halls" onclick="setVenueTab('halls')" class="btn btn-sm btn-primary">Conference Halls & Labs</button>
+            <button id="venue-tab-travel" onclick="setVenueTab('travel')" class="btn btn-sm btn-outline">Getting Here & Parking</button>
+          </div>
+        </div>
+
+        <div id="venue-content-halls" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.75rem;">
+          <div class="glass-card">
+            <h3 style="font-size: 1.25rem; font-weight: 800; color: #fff; margin-bottom: 0.6rem;">Main Auditorium (Computing Block)</h3>
+            <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.6; margin-bottom: 1.25rem;">Capacity: 800+ seats. Host of Opening & Closing Ceremonies, Keynotes, and Grand Hackathon Pitches.</p>
+            <div style="font-size: 0.76rem; font-weight: 700; color: var(--cyan-light); text-transform: uppercase; margin-bottom: 0.5rem;">Facilities</div>
+            <div style="display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.85rem; color: #e2e8f0;">
+              <div>• Dual 4K Laser Projection</div>
+              <div>• Dolby Surround Acoustics</div>
+              <div>• Live Broadcast Green Room</div>
+            </div>
+          </div>
+
+          <div class="glass-card">
+            <h3 style="font-size: 1.25rem; font-weight: 800; color: #fff; margin-bottom: 0.6rem;">Innovation Labs & Hackathon Arena</h3>
+            <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.6; margin-bottom: 1.25rem;">Dedicated high-speed labs for Day 1 Hands-on Masterclasses and the 24h National Tech Hackathon.</p>
+            <div style="font-size: 0.76rem; font-weight: 700; color: var(--cyan-light); text-transform: uppercase; margin-bottom: 0.5rem;">Facilities</div>
+            <div style="display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.85rem; color: #e2e8f0;">
+              <div>• Gigabit Fiber WiFi 6E</div>
+              <div>• Dual Monitor Workstations</div>
+              <div>• Cloud GPU Sandbox Access</div>
+            </div>
+          </div>
+
+          <div class="glass-card">
+            <h3 style="font-size: 1.25rem; font-weight: 800; color: #fff; margin-bottom: 0.6rem;">Mini Theaters A & B</h3>
+            <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.6; margin-bottom: 1.25rem;">Specialized parallel track rooms for Cybersecurity deep dives, WASM demos, and developer workshops.</p>
+            <div style="font-size: 0.76rem; font-weight: 700; color: var(--cyan-light); text-transform: uppercase; margin-bottom: 0.5rem;">Facilities</div>
+            <div style="display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.85rem; color: #e2e8f0;">
+              <div>• Tiered Seating for 150</div>
+              <div>• Interactive Q&A Microphones</div>
+              <div>• Live Stream Recording</div>
+            </div>
+          </div>
+
+          <div class="glass-card">
+            <h3 style="font-size: 1.25rem; font-weight: 800; color: #fff; margin-bottom: 0.6rem;">SLIIT Courtyard & Delegate Lounge</h3>
+            <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.6; margin-bottom: 1.25rem;">Open-air networking hub with lunch buffets, coffee stations, sponsor partner booths, and tech demos.</p>
+            <div style="font-size: 0.76rem; font-weight: 700; color: var(--cyan-light); text-transform: uppercase; margin-bottom: 0.5rem;">Facilities</div>
+            <div style="display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.85rem; color: #e2e8f0;">
+              <div>• Sponsor Exhibition Pods</div>
+              <div>• Student Project Showcases</div>
+              <div>• All-Day Espresso Bar</div>
+            </div>
+          </div>
+        </div>
+
+        <div id="venue-content-travel" style="display: none; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.75rem;">
+          <div class="glass-card">
+            <div style="font-size: 2rem; margin-bottom: 0.75rem;">🚗</div>
+            <h3 style="font-size: 1.25rem; font-weight: 800; color: #fff; margin-bottom: 0.5rem;">By Car / Taxi / PickMe</h3>
+            <p style="color: var(--text-muted); font-size: 0.94rem; line-height: 1.6;">Located on New Kandy Road (B263), Malabe. Just 5 minutes from the Outer Circular Expressway (Kothalawala Exit).</p>
+          </div>
+          <div class="glass-card">
+            <div style="font-size: 2rem; margin-bottom: 0.75rem;">🚌</div>
+            <h3 style="font-size: 1.25rem; font-weight: 800; color: #fff; margin-bottom: 0.5rem;">By Public Bus</h3>
+            <p style="color: var(--text-muted); font-size: 0.94rem; line-height: 1.6;">Bus routes 177 (Kollupitiya - Kaduwela), 143 (Colombo - Kaduwela), and 17 (Panadura - Kandy) stop right in front of SLIIT Gate.</p>
+          </div>
+          <div class="glass-card">
+            <div style="font-size: 2rem; margin-bottom: 0.75rem;">🅿️</div>
+            <h3 style="font-size: 1.25rem; font-weight: 800; color: #fff; margin-bottom: 0.5rem;">Campus Parking</h3>
+            <p style="color: var(--text-muted); font-size: 0.94rem; line-height: 1.6;">Free secured multi-level vehicle parking available for all registered conference delegates and VIP speakers.</p>
+          </div>
+        </div>
+
+        <div class="glass-card" style="margin-top: 3rem; padding: 2rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem; background: linear-gradient(135deg, rgba(16, 24, 44, 0.9) 0%, rgba(26, 17, 48, 0.9) 100%); border: 1px solid rgba(124, 58, 237, 0.3);">
+          <div>
+            <h3 style="font-size: 1.3rem; font-weight: 800; color: #fff; margin-bottom: 0.35rem;">Sri Lanka Institute of Information Technology (SLIIT)</h3>
+            <p style="color: var(--text-muted); font-size: 0.92rem;">New Kandy Rd, Malabe 10115, Sri Lanka • Lat 6.9147° N, Lon 79.9729° E</p>
+          </div>
+          <a href="https://maps.google.com/?q=SLIIT+Malabe+Campus" target="_blank" rel="noreferrer" class="btn btn-outline">
+            Open in Google Maps ↗
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sponsors Section -->
+    <section id="sponsors" class="section-wrapper">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge badge-cyan">PARTNERS & SPONSORS</span>
+          <h2 class="section-title">
+            Supported by <span class="gradient-cyan-text">Global Industry Leaders</span>
+          </h2>
+          <p class="section-subtitle">
+            We are proud to collaborate with world-leading cloud providers, software enterprises, and student developer communities.
+          </p>
+        </div>
+
+        <div style="margin-bottom: 3rem; text-align: center;">
+          <div style="font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cyan-light); margin-bottom: 1.25rem;">Platinum Title Sponsors</div>
+          <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem;">
+            <div class="glass-card" style="min-width: 220px; padding: 1.75rem 2.5rem; text-align: center; border: 1px solid rgba(6, 182, 212, 0.35);">
+              <div style="font-size: 1.35rem; font-weight: 800; color: #fff;">Google Cloud</div>
+            </div>
+            <div class="glass-card" style="min-width: 220px; padding: 1.75rem 2.5rem; text-align: center; border: 1px solid rgba(6, 182, 212, 0.35);">
+              <div style="font-size: 1.35rem; font-weight: 800; color: #fff;">Amazon Web Services</div>
+            </div>
+            <div class="glass-card" style="min-width: 220px; padding: 1.75rem 2.5rem; text-align: center; border: 1px solid rgba(6, 182, 212, 0.35);">
+              <div style="font-size: 1.35rem; font-weight: 800; color: #fff;">Microsoft Azure</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 3rem; text-align: center;">
+          <div style="font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--primary-light); margin-bottom: 1.25rem;">Gold Innovation Partners</div>
+          <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1.25rem;">
+            <div class="glass-card" style="min-width: 180px; padding: 1.25rem 2rem; text-align: center; border: 1px solid rgba(124, 58, 237, 0.3);">
+              <div style="font-size: 1.15rem; font-weight: 700; color: #e2e8f0;">WSO2</div>
+            </div>
+            <div class="glass-card" style="min-width: 180px; padding: 1.25rem 2rem; text-align: center; border: 1px solid rgba(124, 58, 237, 0.3);">
+              <div style="font-size: 1.15rem; font-weight: 700; color: #e2e8f0;">IFS Technologies</div>
+            </div>
+            <div class="glass-card" style="min-width: 180px; padding: 1.25rem 2rem; text-align: center; border: 1px solid rgba(124, 58, 237, 0.3);">
+              <div style="font-size: 1.15rem; font-weight: 700; color: #e2e8f0;">Sysco LABS</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card" style="margin-top: 4rem; padding: 2.5rem; text-align: center; background: linear-gradient(135deg, rgba(124, 58, 237, 0.15) 0%, rgba(6, 182, 212, 0.1) 100%); border: 1px solid rgba(124, 58, 237, 0.3);">
+          <h3 style="font-size: 1.5rem; font-weight: 800; color: #fff; margin-bottom: 0.5rem;">Interested in Sponsoring SLIIT Tech Conf 2026?</h3>
+          <p style="color: var(--text-muted); max-width: 620px; margin: 0 auto 1.5rem auto; font-size: 0.94rem;">Gain direct brand visibility among 1,500+ top Sri Lankan engineering undergraduates, postgraduates, and industry tech leaders.</p>
+          <button onclick="showToast('Sponsorship Prospectus download started!', 'success')" class="btn btn-primary">Download Sponsorship Deck (PDF)</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section-wrapper" style="background: rgba(8, 12, 22, 0.6);">
+      <div class="container" style="max-width: 840px;">
+        <div class="section-header">
+          <span class="badge">FREQUENTLY ASKED QUESTIONS</span>
+          <h2 class="section-title">Have <span class="gradient-text">Questions?</span></h2>
+          <p class="section-subtitle">Find everything you need to know about delegate registration, campus access, hackathon rules, and certificates.</p>
+
+          <div style="display: flex; justify-content: center; gap: 0.5rem; margin-top: 1.5rem; flex-wrap: wrap;">
+            <button class="faq-tab-btn" data-cat="All" onclick="setFaqCat('All')" style="padding: 0.4rem 1rem; border-radius: var(--radius-full); font-size: 0.82rem; font-weight: 600; cursor: pointer; border: 1px solid var(--primary-light); background: rgba(124, 58, 237, 0.25); color: #fff;">All</button>
+            <button class="faq-tab-btn" data-cat="General" onclick="setFaqCat('General')" style="padding: 0.4rem 1rem; border-radius: var(--radius-full); font-size: 0.82rem; font-weight: 600; cursor: pointer; border: 1px solid var(--border-glass); background: rgba(255, 255, 255, 0.03); color: var(--text-muted);">General</button>
+            <button class="faq-tab-btn" data-cat="Ticketing" onclick="setFaqCat('Ticketing')" style="padding: 0.4rem 1rem; border-radius: var(--radius-full); font-size: 0.82rem; font-weight: 600; cursor: pointer; border: 1px solid var(--border-glass); background: rgba(255, 255, 255, 0.03); color: var(--text-muted);">Ticketing</button>
+            <button class="faq-tab-btn" data-cat="Hackathon" onclick="setFaqCat('Hackathon')" style="padding: 0.4rem 1rem; border-radius: var(--radius-full); font-size: 0.82rem; font-weight: 600; cursor: pointer; border: 1px solid var(--border-glass); background: rgba(255, 255, 255, 0.03); color: var(--text-muted);">Hackathon</button>
+            <button class="faq-tab-btn" data-cat="Workshops" onclick="setFaqCat('Workshops')" style="padding: 0.4rem 1rem; border-radius: var(--radius-full); font-size: 0.82rem; font-weight: 600; cursor: pointer; border: 1px solid var(--border-glass); background: rgba(255, 255, 255, 0.03); color: var(--text-muted);">Workshops</button>
+          </div>
+        </div>
+
+        <div id="faq-accordion" style="display: flex; flex-direction: column; gap: 1rem;"></div>
+      </div>
+    </section>
+
+    <!-- Newsletter & Contact Section -->
+    <section id="contact" class="section-wrapper" style="background: rgba(7, 10, 20, 0.8);">
+      <div class="container">
+        <div class="glass-card" style="padding: 3rem 2rem; text-align: center; margin-bottom: 4.5rem; background: linear-gradient(135deg, rgba(124, 58, 237, 0.12) 0%, rgba(6, 182, 212, 0.08) 100%); border: 1px solid rgba(124, 58, 237, 0.3);">
+          <span class="badge badge-cyan">STAY UPDATED</span>
+          <h2 style="font-size: 2rem; font-weight: 800; color: #fff; margin-bottom: 0.5rem;">Subscribe to Conference Bulletins</h2>
+          <p style="color: var(--text-muted); max-width: 580px; margin: 0 auto 1.75rem auto; font-size: 0.96rem;">Get exclusive keynote announcements, workshop registration alerts, and speaker schedule drops directly in your inbox.</p>
+          <form onsubmit="handleNewsletterSubmit(event)" style="display: flex; max-width: 480px; margin: 0 auto; gap: 0.6rem; flex-wrap: wrap;">
+            <input id="newsletter-email" type="email" required placeholder="Enter your email address..." class="form-input" style="flex: 1; min-width: 220px;" />
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </form>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem;">
+          <div>
+            <span class="badge">GET IN TOUCH</span>
+            <h2 class="section-title" style="text-align: left; margin-bottom: 1rem;">Have Questions for the <span class="gradient-text">Organizing Team?</span></h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.65; margin-bottom: 2rem;">Whether you are an attendee, student club leader, university delegation, or corporate sponsor, our organizing desk is here to assist you.</p>
+            <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+              <div style="display: flex; align-items: center; gap: 1rem;">
+                <div style="width: 42px; height: 42px; border-radius: 10px; background: rgba(124, 58, 237, 0.15); display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">📧</div>
+                <div>
+                  <div style="font-size: 0.78rem; color: var(--text-dim); text-transform: uppercase;">Email Helpdesk</div>
+                  <div style="font-size: 0.95rem; color: #fff; font-weight: 600;">techconf2026@sliit.lk</div>
+                </div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 1rem;">
+                <div style="width: 42px; height: 42px; border-radius: 10px; background: rgba(6, 182, 212, 0.15); display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">📞</div>
+                <div>
+                  <div style="font-size: 0.78rem; color: var(--text-dim); text-transform: uppercase;">Phone Hotline</div>
+                  <div style="font-size: 0.95rem; color: #fff; font-weight: 600;">+94 11 754 4801</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass-card" style="padding: 2rem;">
+            <h3 style="font-size: 1.25rem; font-weight: 800; color: #fff; margin-bottom: 1.25rem;">Send a Direct Message</h3>
+            <form id="contact-form" onsubmit="handleContactSubmit(event)">
+              <div class="form-group">
+                <label class="form-label">Your Name</label>
+                <input id="contact-name" type="text" required placeholder="Full Name" class="form-input" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Email Address</label>
+                <input type="email" required placeholder="name@domain.com" class="form-input" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Message</label>
+                <textarea rows="3" required placeholder="How can our committee assist you?" class="form-textarea"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: #040710; border-top: 1px solid rgba(255, 255, 255, 0.08); padding: 4.5rem 0 2rem 0;">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 3rem; margin-bottom: 3.5rem;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+              <div style="width: 36px; height: 36px; border-radius: 8px; background: linear-gradient(135deg, #7C3AED 0%, #06B6D4 100%); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 800;">⚡</div>
+              <div style="font-family: var(--font-heading); font-weight: 800; font-size: 1.2rem; color: #fff;">SLIIT <span class="gradient-text">TECH 2026</span></div>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6;">Sri Lanka's premier annual computing and technology conference. Hosted by the Faculty of Computing, SLIIT Malabe Campus.</p>
+          </div>
+          <div>
+            <div style="font-size: 0.92rem; font-weight: 700; color: #fff; text-transform: uppercase; margin-bottom: 1.2rem;">Quick Navigation</div>
+            <div style="display: flex; flex-direction: column; gap: 0.65rem;">
+              <a href="#about" style="color: var(--text-muted); text-decoration: none; font-size: 0.88rem;">About Conference</a>
+              <a href="#tracks" style="color: var(--text-muted); text-decoration: none; font-size: 0.88rem;">4 Tech Tracks</a>
+              <a href="#speakers" style="color: var(--text-muted); text-decoration: none; font-size: 0.88rem;">Speakers</a>
+              <a href="#schedule" style="color: var(--text-muted); text-decoration: none; font-size: 0.88rem;">3-Day Agenda</a>
+              <a href="#tickets" style="color: var(--text-muted); text-decoration: none; font-size: 0.88rem;">Ticket Passes</a>
+            </div>
+          </div>
+          <div>
+            <div style="font-size: 0.92rem; font-weight: 700; color: #fff; text-transform: uppercase; margin-bottom: 1.2rem;">Delegates & Authors</div>
+            <div style="display: flex; flex-direction: column; gap: 0.65rem;">
+              <button onclick="openCFPModal()" style="background: none; border: none; padding: 0; text-align: left; color: var(--cyan-light); cursor: pointer; font-size: 0.88rem;">Call for Papers (CFP)</button>
+              <button onclick="openRegisterModal('student')" style="background: none; border: none; padding: 0; text-align: left; color: var(--text-muted); cursor: pointer; font-size: 0.88rem;">Student Registration Pass</button>
+              <a href="#venue" style="color: var(--text-muted); text-decoration: none; font-size: 0.88rem;">Campus Venue & Transport</a>
+            </div>
+          </div>
+        </div>
+        <div style="border-top: 1px solid rgba(255, 255, 255, 0.06); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+          <div style="font-size: 0.84rem; color: var(--text-dim);">© 2026 SLIIT Tech Conference. All Rights Reserved. Faculty of Computing, SLIIT.</div>
+          <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="btn btn-outline btn-sm">↑ Back to Top</button>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Speaker Bio Modal -->
+    <div id="speaker-modal" class="modal-overlay" style="display: none;" onclick="closeSpeakerModal()">
+      <div class="modal-content" onclick="event.stopPropagation()">
+        <button class="modal-close" onclick="closeSpeakerModal()">✕</button>
+        <div style="display: flex; gap: 1.75rem; align-items: flex-start; flex-wrap: wrap; margin-bottom: 1.75rem;">
+          <img id="modal-speaker-avatar" src="" alt="Speaker" style="width: 120px; height: 120px; border-radius: 20px; object-fit: cover; border: 2px solid rgba(124, 58, 237, 0.4);" />
+          <div style="flex: 1; min-width: 220px;">
+            <span id="modal-speaker-company" class="badge badge-cyan" style="margin-bottom: 0.5rem;">Company</span>
+            <h2 id="modal-speaker-name" style="font-size: 1.8rem; font-weight: 800; color: #fff; margin-bottom: 0.35rem;">Name</h2>
+            <div id="modal-speaker-role" style="font-size: 1rem; color: var(--text-muted); font-weight: 500;">Role</div>
+          </div>
+        </div>
+        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(124, 58, 237, 0.25); border-radius: var(--radius-md); padding: 1.25rem 1.5rem; margin-bottom: 1.5rem;">
+          <div style="font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--cyan-light); margin-bottom: 0.4rem;">Featured Presentation</div>
+          <h3 id="modal-speaker-talk" style="font-size: 1.2rem; font-weight: 700; color: #fff; line-height: 1.4;">Talk Title</h3>
+        </div>
+        <div style="margin-bottom: 2rem;">
+          <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.6rem;">Biography</h4>
+          <p id="modal-speaker-bio" style="color: #e2e8f0; font-size: 0.96rem; line-height: 1.7;">Bio details...</p>
+        </div>
+        <div style="display: flex; justify-content: flex-end; gap: 1rem; border-top: 1px solid var(--border-glass); padding-top: 1.25rem;">
+          <button class="btn btn-outline" onclick="closeSpeakerModal()">Close</button>
+          <button class="btn btn-primary" onclick="closeSpeakerModal(); openRegisterModal('student');">Attend this Session</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Registration Modal -->
+    <div id="register-modal" class="modal-overlay" style="display: none;" onclick="closeRegisterModal()">
+      <div class="modal-content" onclick="event.stopPropagation()">
+        <button class="modal-close" onclick="closeRegisterModal()">✕</button>
+
+        <!-- Step 1: Form -->
+        <div id="reg-step-form">
+          <div style="margin-bottom: 1.75rem;">
+            <span class="badge badge-emerald">DELEGATE REGISTRATION</span>
+            <h2 style="font-size: 1.8rem; font-weight: 800; color: #fff; margin-bottom: 0.4rem;">Secure Your <span class="gradient-text">Conference Pass</span></h2>
+            <p style="color: var(--text-muted); font-size: 0.92rem;">SLIIT Tech Conference 2026 • Nov 12-14, 2026 • Malabe Campus</p>
+          </div>
+
+          <form onsubmit="handleRegistrationSubmit(event)">
+            <div class="form-group">
+              <label class="form-label">Selected Pass Category</label>
+              <select id="reg-tier-select" class="form-select">
+                <option value="student">Student Pass (LKR 1,500)</option>
+                <option value="pro">Professional Pass (LKR 6,500)</option>
+                <option value="vip">VIP All-Access Pass (LKR 15,000)</option>
+              </select>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+              <div class="form-group">
+                <label class="form-label">Full Name *</label>
+                <input id="reg-name" type="text" required placeholder="e.g. Harsha Bandara" class="form-input" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Email Address *</label>
+                <input id="reg-email" type="email" required placeholder="name@example.com" class="form-input" />
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+              <div class="form-group">
+                <label class="form-label">Phone / WhatsApp</label>
+                <input type="tel" placeholder="+94 77 123 4567" class="form-input" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">University / Company</label>
+                <input id="reg-inst" type="text" placeholder="SLIIT / Company Name" class="form-input" />
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1rem;">
+              <div class="form-group">
+                <label class="form-label">Day 1 Workshop Interest</label>
+                <select class="form-select">
+                  <option>AI: Fine-Tuning Open Source LLMs</option>
+                  <option>DevOps: Automated Kubernetes with ArgoCD</option>
+                  <option>Web3: Zero-Knowledge Proofs in Rust</option>
+                  <option>24h Hackathon Participant</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">T-Shirt Size</label>
+                <select class="form-select">
+                  <option>S</option>
+                  <option selected>M</option>
+                  <option>L</option>
+                  <option>XL</option>
+                </select>
+              </div>
+            </div>
+
+            <div style="margin-top: 1.5rem; display: flex; justify-content: flex-end; gap: 1rem;">
+              <button type="button" class="btn btn-outline" onclick="closeRegisterModal()">Cancel</button>
+              <button type="submit" class="btn btn-primary" style="padding: 0.85rem 2rem;">Confirm & Generate Pass</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Step 2: Badge Preview -->
+        <div id="reg-step-badge" style="display: none; text-align: center;">
+          <div style="font-size: 3rem; margin-bottom: 0.5rem;">🎉</div>
+          <h2 style="font-size: 1.8rem; font-weight: 800; color: #fff; margin-bottom: 0.4rem;">Registration Confirmed!</h2>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.75rem;">Your digital delegate pass has been generated. Present this QR code at campus check-in desk.</p>
+
+          <div style="background: linear-gradient(135deg, #131b32 0%, #1e1338 100%); border: 2px solid rgba(124, 58, 237, 0.5); border-radius: var(--radius-lg); padding: 2rem; max-width: 420px; margin: 0 auto 2rem auto; position: relative; overflow: hidden; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7), 0 0 30px rgba(124, 58, 237, 0.25);">
+            <div style="position: absolute; top: 0; left: 0; right: 0; height: 6px; background: linear-gradient(90deg, #7C3AED, #06B6D4, #EC4899);"></div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+              <div style="text-align: left;">
+                <div style="font-size: 0.75rem; font-weight: 800; color: var(--cyan-light); letter-spacing: 0.05em;">SLIIT TECH CONF 2026</div>
+                <div style="font-size: 0.68rem; color: var(--text-dim);">OFFICIAL DELEGATE BADGE</div>
+              </div>
+              <div id="badge-tier" style="padding: 0.2rem 0.6rem; border-radius: var(--radius-full); background: rgba(124, 58, 237, 0.2); color: #c4b5fd; border: 1px solid rgba(124, 58, 237, 0.5); font-size: 0.72rem; font-weight: 800;">STUDENT PASS</div>
+            </div>
+
+            <div style="margin: 1.5rem 0;">
+              <div id="badge-name" style="font-size: 1.4rem; font-weight: 800; color: #fff;">Harsha Bandara</div>
+              <div id="badge-inst" style="font-size: 0.88rem; color: var(--text-muted);">SLIIT Computing</div>
+            </div>
+
+            <div style="width: 130px; height: 130px; margin: 0 auto 1.25rem auto; background: #fff; border-radius: 12px; padding: 8px; display: flex; align-items: center; justify-content: center;">
+              <img id="badge-qr" src="" alt="Pass QR" style="width: 100%; height: 100%;" />
+            </div>
+
+            <div id="badge-ref" style="font-family: monospace; font-size: 0.85rem; color: var(--cyan-light); letter-spacing: 0.1em;">SLIIT-TC26-948201</div>
+          </div>
+
+          <div style="display: flex; justify-content: center; gap: 1rem;">
+            <button class="btn btn-outline" onclick="showToast('Badge Pass Reference Copied!', 'info')">Copy Pass Ref</button>
+            <button class="btn btn-primary" onclick="closeRegisterModal()">Done</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Call for Papers Modal -->
+    <div id="cfp-modal" class="modal-overlay" style="display: none;" onclick="closeCFPModal()">
+      <div class="modal-content" onclick="event.stopPropagation()">
+        <button class="modal-close" onclick="closeCFPModal()">✕</button>
+
+        <div id="cfp-step-form">
+          <div style="margin-bottom: 1.75rem;">
+            <span class="badge badge-cyan">CALL FOR PAPERS (CFP)</span>
+            <h2 style="font-size: 1.8rem; font-weight: 800; color: #fff; margin-bottom: 0.4rem;">Share Your Research & Expertise</h2>
+            <p style="color: var(--text-muted); font-size: 0.92rem;">Submit proposals for keynotes, tech talks, and hands-on labs at SLIIT Tech Conf 2026.</p>
+          </div>
+
+          <form onsubmit="handleCFPSubmit(event)">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+              <div class="form-group">
+                <label class="form-label">Speaker Name *</label>
+                <input type="text" required placeholder="e.g. Dr. Kasun Silva" class="form-input" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Speaker Email *</label>
+                <input type="email" required placeholder="kasun@techcorp.com" class="form-input" />
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+              <div class="form-group">
+                <label class="form-label">Organization / Lab</label>
+                <input type="text" placeholder="Company / Research Lab" class="form-input" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Conference Track *</label>
+                <select class="form-select">
+                  <option>Artificial Intelligence & ML</option>
+                  <option>Cloud Native & DevOps</option>
+                  <option>Cybersecurity & Web3</option>
+                  <option>Next-Gen Web & Mobile</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Proposed Session Title *</label>
+              <input id="cfp-title" type="text" required placeholder="e.g. Distributed Consensus in Post-Quantum Networks" class="form-input" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Session Abstract & Takeaways *</label>
+              <textarea rows="3" required placeholder="Summarize the core technical content and what attendees will learn..." class="form-textarea"></textarea>
+            </div>
+
+            <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 1.5rem;">
+              <button type="button" class="btn btn-outline" onclick="closeCFPModal()">Cancel</button>
+              <button type="submit" class="btn btn-cyan">Submit Proposal</button>
+            </div>
+          </form>
+        </div>
+
+        <div id="cfp-step-success" style="display: none; text-align: center; padding: 2rem 0;">
+          <div style="font-size: 3rem; margin-bottom: 1rem;">📬</div>
+          <h2 style="font-size: 1.8rem; font-weight: 800; color: #fff; margin-bottom: 0.5rem;">Proposal Received!</h2>
+          <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 460px; margin: 0 auto 2rem auto; line-height: 1.6;">
+            Thank you for submitting <strong id="cfp-confirmed-title"></strong>. The Technical Review Board will notify accepted speakers by October 15, 2026.
+          </p>
+          <button class="btn btn-primary" onclick="closeCFPModal()">Done</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="/src/app.js"></script>
   </body>
 </html>
